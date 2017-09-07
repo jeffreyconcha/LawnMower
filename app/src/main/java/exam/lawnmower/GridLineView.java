@@ -9,8 +9,7 @@ import android.view.View;
 
 public class GridLineView extends View {
 
-    private int height = 0;
-    private int width = 0;
+    private int sizeWidth, sizeHeight;
     private Paint paint;
 
     public GridLineView(Context context) {
@@ -33,23 +32,23 @@ public class GridLineView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        int mWidth = getWidth();
-        int mHeight = getHeight();
-        int w = mWidth / width;
-        int h = mHeight / height;
-        for(int i = 1; i <= width - 1; i++) {
-            int x = i * w;
-            canvas.drawLine(x, 0, x, mHeight, paint);
+        int maxWidth = getWidth();
+        int maxHeight = getHeight();
+        int unitWidth = maxWidth / sizeWidth;
+        int unitHeight = maxHeight / sizeHeight;
+        for(int i = 1; i <= sizeWidth - 1; i++) {
+            int x = i * unitWidth;
+            canvas.drawLine(x, 0, x, maxHeight, paint);
         }
-        for(int i = 1; i <= height - 1; i++) {
-            int y = i * h;
-            canvas.drawLine(0, y, mWidth, y, paint);
+        for(int i = 1; i <= sizeHeight - 1; i++) {
+            int y = i * unitHeight;
+            canvas.drawLine(0, y, maxWidth, y, paint);
         }
     }
 
-    public void showGrid(int width, int height) {
-        this.width = width;
-        this.height = height;
+    public void showGrid(int sizeWidth, int sizeHeight) {
+        this.sizeWidth = sizeWidth;
+        this.sizeHeight = sizeHeight;
         invalidate();
     }
 }
