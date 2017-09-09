@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lawn Mower</string>
+    <string name="start">Start</string>
+    <string name="no_of_mowers">No. of Mowers</string>
 </resources>
